@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Init to Flask</title>
+   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oswald:400,700&amp;display=swap">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='/css/style.css') }}">
+</head>
+<body>
+
+  <div class="body">
+    <h1>Change the voice</h1>
+      {%for file_name in audios%}
+      <div class="col-xs-12 col-sm-6">
+        <h2>Audio {{file_name}}</h2>
+        <div class="col-xs-12 col-sm-6">
+          <audio controls="controls" autoplay="autoplay">
+            <source src="{{ url_for('static', filename='audio/%s' % (file_name) ) }}" type="audio/mpeg">
+            Your browser does not support the audio element.
+          </audio>
+        </div>
+        <div class="col-xs-12 col-sm-5">
+          <a href="{{url_for('record_audio', file_name=file_name ) }}">reload</a>
+        </div>
+      </div>
+      {%endfor%}
+      <div class="col-xs-12 col-sm-6">
+        <form action="{{ url_for('generate_audio') }}" method="POST">
+          <textarea name="text_to_speech" rows="5" cols="33">
+          </textarea>
+          <div class="col-xs-12">
+            <input type="submit" value="Submit">
+          </div>
+        </form>
+
+  </div>
+
+
+</body>
+</html>

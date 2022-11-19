@@ -1,0 +1,3 @@
+/static/audio/*.wav
+.ipynb_checkpoints/
+__pycache__/
