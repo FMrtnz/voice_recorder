@@ -1,0 +1,15 @@
+{% extends 'index.html' %}
+
+{% block body %}
+
+<h2>Final result {{file_name}}</h2>
+<div class="col-xs-12 col-sm-6">
+  <audio controls="controls" autoplay="autoplay">
+    <source src="{{ url_for('static', filename='audio/%s' % (final_file) ) }}" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+</div>
+<div class="col-xs-12 col-sm-5">
+  <a href="{{ url_for('main') }}">Try a new text</a>
+</div>
+{% endblock %}
