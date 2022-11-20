@@ -72,6 +72,6 @@ def generate_audio():
     # Save the results with torch
     result_name = f"{time_stamp}-generated.wav"
     torchaudio.save(file_path + result_name, gen.squeeze(0).cpu(), 24000)
-    return redirect(url_for( 'results', final_file=final_file ))
+    return redirect(url_for( 'results', final_file=result_name ))
 
 app.run(debug = True, port=5000) # to allow for debugging and auto-reload
